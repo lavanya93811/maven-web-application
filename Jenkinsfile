@@ -26,6 +26,14 @@ pipeline{
                 sh 'docker build -t lavanyatechnologies/docker_cicd:${buildNumber} .'
                             }
         }
+         stage('push docker image to dockerhub'){
+            steps{
+                withCredentials([string(credentialsId: 'Docker_Hub_Password', variable: 'Docker_Hub_Password')]) {
+                    sh 'docker login -u lavanyatechnologies -p ${Docker_Hub_Password}'
+                }
+                sh 'docker push lavanyatechnologies/docker_cicd:${buildNumber} '
+            }
+        }
         
     }
 }
