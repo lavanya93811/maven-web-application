@@ -3,6 +3,9 @@ pipeline{
     tools{
        maven 'maven_3.9.7'
     }
+     environment{
+        buildNumber = "${BUILD_NUMBER}"
+    }
     
     
 
@@ -17,6 +20,11 @@ pipeline{
             steps{
                 sh 'mvn clean package'
             }
+        }
+         stage('create docker image'){
+            steps{
+                sh 'docker build -t lavanyatechnologies/docker_cicd:${buildNumber} .'
+                            }
         }
         
     }
