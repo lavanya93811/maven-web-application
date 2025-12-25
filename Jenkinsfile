@@ -39,6 +39,14 @@ pipeline{
                 sh 'docker rmi lavanyatechnologies/docker_cicd:${buildNumber}'
             }
         }
+         stage('deploying to server'){
+            steps{
+                sshagent(['deployment_ssh']) {
+                    sh "ssh -o StrictHostKeyChecking=no ubuntu@51.20.188.67 docker rm -f mavenwebapplication || true"
+                    sh "ssh -o StrictHostkeyChecking=no ubuntu@51.20.188.67 docker run -d --name mavenwebapplication -p 8080:8080 lavanyatechnologies/docker_cicd:${buildNumber}"
+                }
+            }
+        }
         
     }
 }
