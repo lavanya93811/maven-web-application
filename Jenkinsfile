@@ -34,6 +34,11 @@ pipeline{
                 sh 'docker push lavanyatechnologies/docker_cicd:${buildNumber} '
             }
         }
+        stage('del docker images in local'){
+            steps{
+                sh 'docker rmi lavanyatechnologies/docker_cicd:${buildNumber}'
+            }
+        }
         
     }
 }
