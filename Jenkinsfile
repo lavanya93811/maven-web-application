@@ -51,7 +51,7 @@ pipeline
         {
             steps()
             {
-                sh 'docker rmi -f 954882650728.dkr.ecr.eu-north-1.amazonaws.com/maven-web-application:latest:${buildNumber}'
+                sh 'docker rmi -f 954882650728.dkr.ecr.eu-north-1.amazonaws.com/maven-web-application:${buildNumber}'
             }
         }
 
