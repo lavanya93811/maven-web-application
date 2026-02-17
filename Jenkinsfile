@@ -9,7 +9,7 @@ pipeline{
     stages{
         stage('checkout code from github'){
             steps{
-                 git branch:'master' url:'https://github.com/lavanya93811/maven-web-application.git'
+                 git branch: 'master', url: 'https://github.com/lavanya93811/maven-web-application.git'
             }
         }
         stage('build artifact'){
