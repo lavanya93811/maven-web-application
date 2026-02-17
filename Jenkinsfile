@@ -59,7 +59,7 @@ pipeline
         {
             steps()
             {
-               sh "sed -i 's|image:.*|image: 954882650728.dkr.ecr.eu-north-1.amazonaws.com/maven-web-application:${buildNumber}|' MavenWebApplication.yaml'"
+               sh "sed -i 's/Build_Tag/${buildNumber}/g' MavenWebApplication.yaml"
             }
         }
 
